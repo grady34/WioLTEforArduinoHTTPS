@@ -1300,6 +1300,8 @@ bool WioLTE::GetGNSSLocation(double* longitude, double* latitude, double* altitu
 	std::string response;
 	std::string locStr;
 
+	_AtSerial.WriteCommand("AT+QGPSLOC=0");
+
 	_AtSerial.WriteCommand("AT+QGPSLOC?");
 	while (true) {
 		if (!_AtSerial.ReadResponse("^(OK|\\+QGPSLOC: .*|\\+CME ERROR: .*)$", 500, &response)) return RET_ERR(false, E_TIMEOUT);
