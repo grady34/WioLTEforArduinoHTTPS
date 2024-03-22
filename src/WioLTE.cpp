@@ -1210,7 +1210,7 @@ bool WioLTE::HttpPost(const char* url, const char* data, int* responseCode, cons
 
 	if (strncmp(url, "https:", 6) == 0) {
 		if (!_AtSerial.WriteCommandAndReadResponse("AT+QHTTPCFG=\"sslctxid\",1"         , "^OK$", 500, NULL)) return RET_ERR(false, E_TIMEOUT);
-		if (!_AtSerial.WriteCommandAndReadResponse("AT+QSSLCFG=\"sslversion\",1,4"      , "^OK$", 500, NULL)) return RET_ERR(false, E_TIMEOUT);
+		if (!_AtSerial.WriteCommandAndReadResponse("AT+QSSLCFG=\"sslversion\",1,3"      , "^OK$", 500, NULL)) return RET_ERR(false, E_TIMEOUT);
 		if (!_AtSerial.WriteCommandAndReadResponse("AT+QSSLCFG=\"ciphersuite\",1,0XFFFF", "^OK$", 500, NULL)) return RET_ERR(false, E_TIMEOUT);
 		if (!_AtSerial.WriteCommandAndReadResponse("AT+QSSLCFG=\"seclevel\",1,0"        , "^OK$", 500, NULL)) return RET_ERR(false, E_TIMEOUT);
 	}
